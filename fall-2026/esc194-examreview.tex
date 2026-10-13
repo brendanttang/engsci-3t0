@@ -3,7 +3,6 @@
 \usepackage{amsmath,amsthm,amssymb,mathtools}
 \usepackage{hyperref}
 \usepackage{lastpage}
-\usepackage{xcolor}
 \usepackage{multicol}
 
 \theoremstyle{plain} 
@@ -28,7 +27,7 @@
 \rhead{\thepage}
 \cfoot{}
 
-\title{ESC194: Calculus I \\ Exam Review}
+\title{ESC194: Calculus I \\[0.1in] Exam Review}
 \author{Brendan Tang}
 \date{Fall 2026}
 
@@ -36,11 +35,6 @@
 
 \maketitle
 \thispagestyle{empty}
-
-\begin{abstract}
-    \centering
-    3 months of Calculus I in \pageref*{LastPage} pages.
-\end{abstract}
 
 \tableofcontents
 
@@ -196,7 +190,7 @@ Here are some useful differentiation theorems.
     \end{itemize}
 \end{theorem}
 
-\subsection{Key Theorems of Differential Calculus}
+\subsubsection{Existence Theorems}
 
 These theorems are very important, serving as stepping stones for many proofs that will be encountered in
 this course. While their proofs will not be provided here, it is highly encouraged to find and read through 
@@ -230,9 +224,11 @@ By using Theorem \ref{thm:mvt} with $f(a)=f(b)$, we get a special case.
     Theorem \ref{thm:mvt}, which serves as its generalization.
 \end{remark}
 
+\subsubsection{Interlude (Approximation)}
+
 On a bit of an unrelated note, we can use differentials to approximate a function $f$ by the formula
 \[ f(x+\Delta x)\approx f(x)+f'(x)\Delta x. \]
-This has been included for the sake of completeness; it has shown up on past exams before.
+This has been included for the sake of completeness, as it has been tested before.
 
 \subsection{Curve Sketching}
 
