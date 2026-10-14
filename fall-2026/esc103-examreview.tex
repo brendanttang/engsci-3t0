@@ -1,0 +1,145 @@
+\documentclass[11pt]{scrartcl}
+
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{multicol}
+
+\theoremstyle{plain} 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{question}{Question}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition} 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[none]{hyphenat}
+\setlength{\parindent}{0pt}
+% setlength{\emergencystretch}{3em}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$} 
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{ESC103: Engineering Mathematics and Computation} 
+\rhead{\thepage}
+\cfoot{}
+
+\title{ESC103: Engineering Mathematics and Computation \\[0.1in] Exam Review}
+\author{Brendan Tang}
+\date{Fall 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\tableofcontents
+
+\newpage
+\section{Vectors}
+\subsection{Vector Operations}
+
+Here are some basic vector operations in $\mathbb{R}^{2}$. 
+
+\begin{itemize}
+    \item Vector Addition: $\begin{bmatrix}v_{1} \\ v_{2}\end{bmatrix}+\begin{bmatrix} w_{1} \\ w_{2}
+    \end{bmatrix} = \begin{bmatrix}v_{1}+w_{1} \\ v_{2}+w_{2}\end{bmatrix}$
+    \item Scalar Multiplication: $c\begin{bmatrix}v_{1} \\ v_{2}\end{bmatrix}=\begin{bmatrix}cv_{1} \\ cv_{2}
+    \end{bmatrix}$
+\end{itemize}
+
+Both of these operations are commutative and associative. \\
+
+There are two ways to multiply vectors in $\mathbb{R}^{3}$. The dot product takes two vectors and returns a scalar. 
+Here are two definitions for the dot product.
+
+\begin{definition}
+    Let $\mathbf{v}=\begin{bmatrix}v_{1} \\ v_{2} \\ v_{3}\end{bmatrix}$ and $\mathbf{w}=\begin{bmatrix}w_{1} \\ 
+    w_{2} \\ w_{3}\end{bmatrix}$. The algebraic definition of the dot product is
+    \[ \mathbf{v}\cdot \mathbf{w}=v_{1}w_{1}+v_{2}w_{2}+v_{3}w_{3}. \]
+    Let $\theta$ be the angle between $\mathbf{v}$ and $\mathbf{w}$. The geometric definition of the dot product is 
+    \[ \mathbf{v}\cdot \mathbf{w}=\lVert \mathbf{v} \rVert \lVert \mathbf{w} \rVert \cos \theta. \]
+\end{definition}
+
+The dot product is commutative and distributive over vector addition. \\
+
+The cross product takes two vectors and returns a vector that is orthogonal to both. Here are two definitions for 
+the cross product.
+
+\begin{definition}
+    Let $\mathbf{v}=\begin{bmatrix}v_{1} \\ v_{2} \\ v_{3}\end{bmatrix}$ and $\mathbf{w}=\begin{bmatrix}w_{1} \\ 
+    w_{2} \\ w_{3}\end{bmatrix}$. The algebraic definition of the cross product is
+    \[ \mathbf{v}\times \mathbf{w}=\begin{bmatrix}v_{2}w_{3}-v_{3}w_{2} \\ v_{3}w_{1}-v_{1}w_{3} \\ 
+    v_{1}w_{2}-v_{2}w_{1} \end{bmatrix}. \]
+    Let $\theta$ be the angle between $\mathbf{v}$ and $\mathbf{w}$. The geometric definition of the cross product is 
+    \[ \lVert \mathbf{v}\times \mathbf{w} \rVert=\lVert \mathbf{v} \rVert \lVert \mathbf{w} \rVert \sin \theta. \]
+\end{definition}
+
+The cross product is anti-commutative and not associative.
+
+\subsubsection{Vector Projection}
+
+The normalization of a vector, $\mathbf{v}$ is
+\[ \hat{\mathbf{v}}=\frac{\mathbf{v}}{\lVert \mathbf{v} \rVert }. \]
+The scalar projection of $\mathbf{v}$ onto $\mathbf{w}$ is 
+\[ \text{comp}_{\mathbf{w}}\mathbf{v} = \frac{{\mathbf{v}\cdot \mathbf{w}}}{\lVert \mathbf{w} \rVert }\ 
+\text{(algebraic)}\quad \text{comp}_{\mathbf{w}}\mathbf{v} = \lVert \mathbf{v} \rVert \cos \theta\ \text{(geometric)}.  \]
+Combining both, the formula for the vector projection of $\mathbf{v}$ onto $\mathbf{w}$ is
+\[ \text{proj}_{\mathbf{w}}\mathbf{v} = \frac{{\mathbf{v}\cdot \mathbf{w}}}{\lVert \mathbf{w}^{2} \rVert }\mathbf{w}. \]
+
+\subsection{Vector Properties}
+
+Here are some special types of vectors in $\mathbb{R}^{3}$.
+
+\begin{itemize}
+    \item Zero Vector: A vector with length $0$, denoted by $\mathbf{0}=\begin{bmatrix}0 \\ 0 \\ 0\end{bmatrix}$
+    \item Unit Vector: A vector with length $1$, denoted by $\hat{\mathbf{v}}$
+    \item Standard Basis Vectors: Special unit vectors denoted by $\hat{\mathbf{i}}=\begin{bmatrix}1 \\ 0 \\ 0
+    \end{bmatrix}$, $\hat{\mathbf{j}}=\begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}$, and $\hat{\mathbf{k}}=\begin{bmatrix}
+    0 \\ 0 \\ 1\end{bmatrix}$
+\end{itemize}
+
+The length of a vector $\mathbf{v}$ in $\mathbb{R}^{3}$ is 
+\[ \lVert \mathbf{v} \rVert  =\sqrt{ v_{1}^{2}+v_{2}^{2}+v_{3}^{2} }. \]
+
+Two vectors $\mathbf{v}$ and $\mathbf{w}$ are orthogonal if
+\[ \mathbf{v}\cdot \mathbf{w}=0. \]
+
+Two vectors $\mathbf{v}$ and $\mathbf{w}$ are collinear if
+\[ \mathbf{v}\times \mathbf{w}=\mathbf{0}. \]
+
+\subsection{Plane Geometry}
+
+A line in $\mathbb{R}^{3}$ can be represented by the vector equation
+\[ \begin{bmatrix}x \\ y \\z\end{bmatrix}=\begin{bmatrix}x_{0} \\ y_{0} \\z_{0}\end{bmatrix}+a\mathbf{d}\quad a\in 
+\mathbb{R}, \]
+where $\mathbf{d}$ is a direction vector and $(x_{0},y_{0},z_{0})$ is a point on the line. \\
+
+Similarly, a plane in $\mathbb{R}^{3}$ can be represented by the vector equation
+\[ \begin{bmatrix}x \\ y \\z\end{bmatrix}=\begin{bmatrix}x_{0} \\ y_{0} \\z_{0}\end{bmatrix}+a\mathbf{d}_{1}+
+b\mathbf{d}_{2}\quad a,\in \mathbb{R}, \]
+where $\mathbf{d}_{1}$, $\mathbf{d}_{2}$ are non-collinear direction vectors and $(x_{0},y_{0},z_{0})$ is a point 
+on the plane. \\
+
+A plane in $\mathbb{R}^{3}$ can also be represented by the scalar equation
+\[ ax+by+cz=d, \]
+where $\mathbf{n}=\begin{bmatrix}a \\ b \\ c\end{bmatrix}$ is a normal vector of the plane (why?).
+
+\subsubsection{Interlude (Row and Column Picture)}
+
+The row picture of a system of linear equations treats each equation as a geometric line or plane, and the solution 
+is the point where they all intersect. \\
+
+The column picture of a system of linear equations views the system as a linear combination of column vectors, and 
+to solve you need to find the correct scalar multiple of each vector. 
+
+\newpage
+\section{Matrices}
+\subsection{Matrix Operations}
+
+Here are some notes on matrices.
+
+\end{document}
