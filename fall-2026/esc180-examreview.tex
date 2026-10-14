@@ -32,7 +32,7 @@
 \tableofcontents
 
 \newpage
-\section{Python Syntax}
+\section{Python Fundamentals}
 \subsection{Comments and Output}
 
 We can use the \mintinline{python}{print()} function to display text or output values. Text must be inside quotes, 
@@ -103,6 +103,14 @@ operator, \mintinline{python}{=}.
 
 Observe how Python automatically determines the type of a variable, unless you explicitly cast a different data
 type.
+
+\subsubsection{Interlude (Local and Global Variables)}
+
+Variables that are created outside of a function are known as global variables. Global variables can be used by 
+everyone, both inside of functions and outside. Variables that are created inside a function are known as local 
+variables. Local variables can only be used inside their functions. 
+
+We can however create global variables inside a function by using the \mintinline{python}{global} keyword.
 
 \subsection{Booleans and Operators}
 
@@ -185,7 +193,6 @@ code block is skipped.
 \begin{example}
     \
 \begin{minted}{python}
-    grade = 60
     if grade >= 85:
         print("GPV: 4.0")
     elif grade >= 80: # Python will move on to this if the original is False
@@ -204,14 +211,12 @@ If we have a lot of cases, we may wish to use a \mintinline{python}{match} state
 \begin{example}
     \
 \begin{minted}{python}
-    color = "blue"
-    daytime = True
     match color:
         case "red":
             print("Roses are red.")
         case "yellow" | "green": # We can check for more than one value match
             print("Grass is green, yellow if dead.")
-        case "blue": if daytime # We can add an extra condition check
+        case "blue": if time == "day" # We can add an extra condition check
             print("The sky is blue.")
         case _: # This will execute if there are no matches
             print("This color is boring.")
@@ -229,7 +234,9 @@ numbers.
 \begin{minted}{python}
     for i in range(3): # Notice how by default, we begin at 0
         print("I am", i)
+
     print(" ")
+
     for i in range(3, 10, 3): # Syntax is (start, stop, step)
         print("I am", i)
 \end{minted}
@@ -289,7 +296,7 @@ Here are some common string methods. Note that there are many others, these are 
     \mintinline{python}{len(s)} & Returns the length of \mintinline{python}{s} \\ \hline
     \mintinline{python}{str0 in s} & Checks if \mintinline{python}{str0} is in \mintinline{python}{s} 
     \\ \hline
-    \mintinline{python}{s[start, stop, step]} & Extracts a portion of \mintinline{python}{s} \\ \hline
+    \mintinline{python}{s[start:stop:step]} & Extracts a portion of \mintinline{python}{s} \\ \hline
     \mintinline{python}{s.upper()} & Returns \mintinline{python}{s} in upper case \\ \hline
     \mintinline{python}{s.lower()} & Returns \mintinline{python}{s} in lower case \\ \hline
     \mintinline{python}{s.strip()} & Returns \mintinline{python}{s} without leading/trailing whitespace \\ \hline
@@ -308,8 +315,8 @@ with a \mintinline{python}{for} loop.
 \begin{minted}{python}
     i = 1
     for char in "mathematics":
-    print((char * i) + (" " * 2 * (11 - i)) + (char * i))
-    i += 1
+        print((char * i) + (" " * 2 * (11 - i)) + (char * i))
+        i += 1
 \end{minted}
 \newpage % dang it dang it dang it :( this makes me very sad
     \textit{Output.}
@@ -375,10 +382,69 @@ to send the function a dictionary of arguments.
 
 \subsection{Lists and Tuples}
 
-To be completed
+Lists are used to store multiple items in a single variable. List items are indexed, the first item has 
+\mintinline{python}{[0]}, the second item has index \mintinline{python}{[1]}, etc. A list can contain different 
+data types. 
+
+Here are some common list methods.
+
+\begin{center}
+\begin{tabular}{|l|l|} \hline
+    \textbf{Syntax} & \textbf{Description} \\ \hline
+    \mintinline{python}{l[i]} & Get the item at position \mintinline{python}{i} in \mintinline{python}{l} \\ \hline
+    \mintinline{python}{len(l)} & Returns the length of \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l[start:stop:step]} & Extracts a portion of \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l.insert(i, item)} & Inserts \mintinline{python}{item} in \mintinline{python}{l} 
+    at \mintinline{python}{i} \\ \hline
+    \mintinline{python}{l.append(item)} & Appends \mintinline{python}{item} to \mintinline{python}{l} \\ \hline
+    \mintinline{python}{list1.extend(list2)} & Appends \mintinline{python}{list1} to \mintinline{python}{list2} 
+    \\ \hline
+    \mintinline{python}{l.remove(item)} & Removes the first occurence of \mintinline{python}{item} from 
+    \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l.pop(i)} & Removes \mintinline{python}{i} from \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l.clear()} & Empties \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l.sort()} & Sorts \mintinline{python}{l} in ascending order \\ \hline
+    \mintinline{python}{l.sort(reverse = True)} & Sorts \mintinline{python}{l} in descending order \\ \hline
+    \mintinline{python}{l.reverse()} & Reverses the order of \mintinline{python}{l} \\ \hline
+    \mintinline{python}{l.copy()} & Copies \mintinline{python}{l} \\ \hline
+\end{tabular}
+\end{center}
 
 \subsection{Dictionaries}
 
-To be completed
+Dictionaries are used to score data values in key:value pairs. I don't feel like typing anymore so here is 
+an example.
+
+\begin{example}
+    \
+\begin{minted}{python} 
+    grades = {
+        "Praxis": 60,
+        "Calculus": 100,
+        "Civ": 80
+    }
+    print("My grade in Praxis is " + grades.get("Praxis"))
+
+    if "Civ" in grades: # Checks if "Civ" is a key in grades
+        print("I am taking CIV102 this term!") 
+    else:
+        print("I am not taking CIV102 this term.")
+
+    grades.pop("Civ") # Removes the pair with "Civ" 
+
+    if "Civ" in grades: # Checks if "Civ" is a key in grades
+        print("I am taking CIV102 this term!")
+    else:
+        print("I am not taking CIV102 this term.")
+
+    grades.clear() # Empties the dictionary
+\end{minted} 
+    \textit{Output.}
+\begin{minted}{text}
+    My grade in Praxis is 60
+    I am taking CIV102 this term!
+    I am not taking CIV102 this term.
+\end{minted}
+\end{example}
 
 \end{document}
