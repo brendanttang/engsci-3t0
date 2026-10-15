@@ -51,7 +51,7 @@ Here are some basic vector operations in $\mathbb{R}^{2}$.
     \end{bmatrix}$
 \end{itemize}
 
-Both of these operations are commutative and associative. \\
+Both are commutative, associative, and scalar multiplication is distributive over vector addition. \\
 
 There are two ways to multiply vectors in $\mathbb{R}^{3}$. The dot product takes two vectors and returns a scalar. 
 Here are two definitions for the dot product.
@@ -64,7 +64,7 @@ Here are two definitions for the dot product.
     \[ \mathbf{v}\cdot \mathbf{w}=\lVert \mathbf{v} \rVert \lVert \mathbf{w} \rVert \cos \theta. \]
 \end{definition}
 
-The dot product is commutative and distributive over vector addition. \\
+The dot product is commutative, distributive over vector addition, and not associative. \\
 
 The cross product takes two vectors and returns a vector that is orthogonal to both. Here are two definitions for 
 the cross product.
@@ -78,7 +78,7 @@ the cross product.
     \[ \lVert \mathbf{v}\times \mathbf{w} \rVert=\lVert \mathbf{v} \rVert \lVert \mathbf{w} \rVert \sin \theta. \]
 \end{definition}
 
-The cross product is anti-commutative and not associative.
+The cross product is anti-commutative, not distributive, and not associative.
 
 \subsubsection{Vector Projection}
 
@@ -126,9 +126,9 @@ on the plane. \\
 
 A plane in $\mathbb{R}^{3}$ can also be represented by the scalar equation
 \[ ax+by+cz=d, \]
-where $\mathbf{n}=\begin{bmatrix}a \\ b \\ c\end{bmatrix}$ is a normal vector of the plane (why?).
+where $\mathbf{n}=\begin{bmatrix}a \\ b \\ c\end{bmatrix}$ is a vector normal to the plane. (why?).
 
-\subsubsection{Interlude (Row and Column Picture)}
+\subsubsection{Interlude (Row and Column Pictures)}
 
 The row picture of a system of linear equations treats each equation as a geometric line or plane, and the solution 
 is the point where they all intersect. \\
@@ -140,6 +140,77 @@ to solve you need to find the correct scalar multiple of each vector.
 \section{Matrices}
 \subsection{Matrix Operations}
 
-Here are some notes on matrices.
+Here are some basic matrix operations.
+
+\begin{itemize}
+    \item Matrix Addition: $\begin{bmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{bmatrix}$ + $\begin{bmatrix}
+    b_{11} & b_{12} \\ b_{21} & b_{22}\end{bmatrix}$ = $\begin{bmatrix}a_{11} + b_{11} & a_{12} + b_{12} \\ 
+    a_{21} + b_{21} & a_{22} + b_{22}\end{bmatrix}$
+    \item Scalar Multiplication: $c\begin{bmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{bmatrix}=\begin{bmatrix}
+    ca_{11} & ca_{12} \\ ca_{21} & ca_{22}\end{bmatrix}$
+\end{itemize}
+
+Both are commutative, associative, and scalar multiplication is distributive over matrix addition. \\
+
+If $\mathbf{A}$ is an $m\times n$ matrix and $\mathbf{B}$ is an $n\times p$ matrix, we can perform matrix 
+multiplication $\mathbf{A}\mathbf{B}$ to get an $m\times p$ matrix.
+
+\begin{definition}
+    Let $\mathbf{A}=\begin{bmatrix}\text{---}\ \mathbf{a}_{1}\ \text{---} \\ \text{---}\ \mathbf{a}_{2}\ \text{---}
+    \end{bmatrix}$ and $\mathbf{B}=\begin{bmatrix}| & | \\ \mathbf{b}_{1} & \mathbf{b}_{2} \\ | & |\end{bmatrix}$. 
+    Then the row-column definition is
+    \[ \mathbf{A}\mathbf{B}=\begin{bmatrix}\mathbf{a}_{1}\cdot \mathbf{b}_{1} & \mathbf{a}_{1}\cdot \mathbf{b}_{1} \\ 
+    \mathbf{a}_{2}\cdot \mathbf{b}_{1} & \mathbf{a}_{2}\cdot \mathbf{b}_{2}\end{bmatrix},\]
+    where the value in the $i$th row and $j$th column of the resultant matrix is equal to $\mathbf{a}_{i}\cdot 
+    \mathbf{b}_{j}$. \\
+
+    Let $\mathbf{A}=\begin{bmatrix}| & | \\ \mathbf{a}_{1} & \mathbf{a}_{2} \\ | & |\end{bmatrix}$ and $\mathbf{B}=
+    \begin{bmatrix}\text{---}\ \mathbf{b}_{1}\ \text{---} \\ \text{---}\ \mathbf{b}_{2}\ \text{---}\end{bmatrix}$.
+    Then the column-scaling definition is
+    \[ \mathbf{A}\mathbf{B}=\begin{bmatrix}b_{11}\begin{bmatrix}| \\ \mathbf{a}_{0} \\ |\end{bmatrix}+b_{21}
+    \begin{bmatrix}| \\ \mathbf{a}_{0} \\ |\end{bmatrix} & b_{12}\begin{bmatrix}| \\ \mathbf{a}_{0} \\ |\end{bmatrix}
+    + b_{22}\begin{bmatrix}| \\ \mathbf{a}_{0} \\ |\end{bmatrix}\end{bmatrix}, \]
+    where the $j$th column of the resultant matrix is a linear combination of $\mathbf{a}_{n}$ using $b_{nj}$ as 
+    coefficients. \\[-0.75em] % :(
+\end{definition} % This entire definition was a nightmare to type
+
+Matrix multiplication is associative, distributive over vector addition, and not commutative. 
+
+\subsubsection{$\mathbf{A}\mathbf{x}=\mathbf{b}$ Geometrically}
+
+We can use row and column pictures to multiply a matrix by a vector. Consider the equation
+\[ \begin{bmatrix}a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}\end{bmatrix}
+\begin{bmatrix}x_{1} \\ x_{2} \\ x_{3}\end{bmatrix}=\begin{bmatrix}b_{1} \\ b_{2} \\ b_{3}\end{bmatrix}. \]
+
+\begin{itemize}
+    \item Row Picture: We get three planes in $\mathbb{R}^{3}$,
+    \[ \begin{aligned} a_{11}x_{1}+a_{12}x_{2}+a_{13}x_{3}&=b_{1} \\ a_{21}x_{1}+a_{22}x_{2}+a_{23}x_{3}&=b_{2} \\ 
+    a_{31}x_{1}+x_{32}x_{2}+a_{33}x_{3}&=b_{3}. \end{aligned} \]
+    \item Column Picture: We get a linear combination of three vectors in $\mathbb{R}^{3}$,
+    \[ x_{1}\begin{bmatrix}a_{11} \\ a_{21} \\ a_{31}\end{bmatrix} + x_{2}\begin{bmatrix}a_{12} \\ a_{22} \\ a_{32}
+    \end{bmatrix} + x_{3}\begin{bmatrix}a_{13} \\ a_{23} \\ a_{33}\end{bmatrix} = \begin{bmatrix}b_{1} \\ b_{2} \\ 
+    b_{3}\end{bmatrix}. \]
+\end{itemize}
+
+\begin{question}
+    For each interpretation, what does it mean geometrically for there to be exactly one solution 
+    $(x_{1},x_{2},x_{3})$? Infinitely many solutions? No solutions?
+\end{question}
+
+\subsubsection{Interlude (Important Definitions)}
+
+Here are some important definitions in linear algebra.
+
+\begin{itemize}
+    \item Linear Independence: $\{\mathbf{a}_{n}\}$ are independent if the only solution to $\mathbf{A}
+    \mathbf{x}=\mathbf{0}$ is $\{x_{n}\}=0$
+    \item Basis: A set of linearly independent vectors that span the vector space
+    \item Span: The span of a basis is the set of all linear combinations of the basis % Circular???
+    \item Dimension: The dimension of a space is the number of vectors in any basis for that space
+    \item Column Space: The column space of a matrix is the span of its column vectors
+    \item Rank: The rank of a matrix is the dimension of its column space
+\end{itemize}
+
+\subsection{Column-Row Factorization}
 
 \end{document}
