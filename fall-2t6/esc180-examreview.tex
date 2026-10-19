@@ -386,69 +386,39 @@ treated as a string.
 
 \subsection{Lists and Tuples}
 
-Lists are used to store multiple items in a single variable. List items are indexed, the first item has 
-\mintinline{python}{[0]}, the second item has index \mintinline{python}{[1]}, etc. A list can contain different 
-data types. 
+Lists and tuples are used to store multiple items in a single variable. Lists are mutable and use square brackets, 
+whereas tuples are immutable and use parentheses. Items in lists and tuples are ordered and allow duplicate values. \\[-0.5em]
 
-Here are some common list methods.
+Items are also indexed, the first item has index \mintinline{python}{[0]}, the second item has index \mintinline{python}{[1]}, etc. 
+Lists and tuples can contain different data types. To determine how many items a tuple or list has, use the 
+\mintinline{python}{len()} function. You can check if an item is present in a list or tuple using the \mintinline{python}{in} 
+keyword. \\[-0.5em]
 
-\begin{center}
-\begin{tabular}{|l|l|} \hline
-    \textbf{Syntax} & \textbf{Description} \\ \hline
-    \mintinline{python}{l[i]} & Get the item at position \mintinline{python}{i} in \mintinline{python}{l} \\ \hline
-    \mintinline{python}{len(l)} & Returns the length of \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l[start:stop:step]} & Extracts a portion of \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l.insert(i, item)} & Inserts \mintinline{python}{item} in \mintinline{python}{l} 
-    at \mintinline{python}{i} \\ \hline
-    \mintinline{python}{l.append(item)} & Appends \mintinline{python}{item} to \mintinline{python}{l} \\ \hline
-    \mintinline{python}{list1.extend(list2)} & Appends \mintinline{python}{list1} to \mintinline{python}{list2} 
-    \\ \hline
-    \mintinline{python}{l.remove(item)} & Removes the first occurence of \mintinline{python}{item} from 
-    \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l.pop(i)} & Removes \mintinline{python}{i} from \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l.clear()} & Empties \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l.sort()} & Sorts \mintinline{python}{l} in ascending order \\ \hline
-    \mintinline{python}{l.sort(reverse = True)} & Sorts \mintinline{python}{l} in descending order \\ \hline
-    \mintinline{python}{l.reverse()} & Reverses the order of \mintinline{python}{l} \\ \hline
-    \mintinline{python}{l.copy()} & Copies \mintinline{python}{l} \\ \hline
-\end{tabular}
-\end{center}
+To insert a new list item without replacing any of the existing values, we can use the \mintinline{python}{insert()} method. To 
+add an item to the end of the list, use the \mintinline{python}{append()} method. To append items from another list to the current 
+list, use the \mintinline{python}{extend()} method. To remove a item, use the \mintinline{python}{remove()} method. If there is more 
+than one item with the specified value, the \mintinline{python}{remove()} method removes the first occurrence. The \mintinline{python}{pop()} 
+method removes the specified index. If you do not specify the index, the \mintinline{python}{pop()} method removes the last item. \\[-0.5em]
+
+List objects have a \mintinline{python}{sort()} method that will sort the list alphanumerically, ascending, by default. To sort descending, 
+use the keyword argument \mintinline{python}{reverse = True}. The \mintinline{python}{reverse()} method reverses the current sorting order of the 
+elements. To copy a list, you can use the \mintinline{python}{copy()} method. \\[-0.5em]
+
+For lists and tuples, you can use the \mintinline{python}{count()} method to return the number of elements with the specified value. You 
+can also use the \mintinline{python}{index()} method to return the position of where a specified value is found.
 
 \subsection{Dictionaries}
 
-Dictionaries are used to score data values in key:value pairs. I don't feel like making another table so here is 
-an example.
+Dictionaries are used to score data values in key:value pairs. They are unordered (in Python 3.3), mutable, and use curly brackets. Similarly 
+to lists and tuples, you can use the \mintinline{python}{len()} function to see how many items a dictionary has. \\[-0.5em]
 
-\begin{example}
-    \
-\begin{minted}{python} 
-    grades = {
-        "Praxis": 60,
-        "Calculus": 100,
-        "Civ": 80
-    }
-    print("My grade in Praxis is " + grades.get("Praxis"))
+You can access an item of a dictionary by referring to its key name inside square brackets. There is also a method called \mintinline{python}{get()} 
+that will give you the same result. The \mintinline{python}{keys()} method will return a list of all the keys in the dictionary. The 
+\mintinline{python}{values()} method will return a list of all the values in the dictionary. The \mintinline{python}{items}. method will return 
+each item in a dictionary, as tuples in a list. To determine if a specified key is present in a dictionary use the \mintinline{python}{in} keyword. \\[-0.5em]
 
-    if "Civ" in grades: # Checks if "Civ" is a key in grades
-        print("I am taking CIV102 this term!") 
-    else:
-        print("I am not taking CIV102 this term.")
-
-    grades.pop("Civ") # Removes the pair with "Civ" 
-
-    if "Civ" in grades: # Checks if "Civ" is a key in grades
-        print("I am taking CIV102 this term!")
-    else:
-        print("I am not taking CIV102 this term.")
-
-    grades.clear() # Empties the dictionary
-\end{minted} 
-    \textit{Output.}
-\begin{minted}{text}
-    My grade in Praxis is 60
-    I am taking CIV102 this term!
-    I am not taking CIV102 this term.
-\end{minted}
-\end{example}
+Adding an item to a dictionary is done by using a new index key and assigning a value to it. The \mintinline{python}{update()} method will update the 
+dictionary with the items from a given argument. If the item does not exist, the item will be added. The \mintinline{python}{pop()} method removes the item 
+with the specified key name. To copy a dictionary, you can use the \mintinline{python}{copy()} method. 
 
 \end{document}
