@@ -178,7 +178,7 @@ differentiability at $a$. \\[-0.5em]
 Here are some useful differentiation theorems.
 
 \begin{theorem}
-    If $f'$ exists, then
+    If $f$ and $g$ are differentiable, then
     \begin{itemize}
         \item (Constant DT) $f(x)=c\implies f'(x)=0$
         \item (Sum DT) $(f+g)'=f'+g'$
@@ -275,5 +275,183 @@ equation in one variable, then evaluate at endpoints and critical points.
 \newpage
 \section{Integrals}
 \subsection{Summation}
+
+Here are some important summation theorems.
+
+\begin{theorem}
+    If $\sum_{k=1}^n a_k$ and $\sum_{k=1}^n b_k$ exist, then
+    \begin{itemize}
+        \item $\sum_{k=1}^n [a_k+b_k]=\sum_{k=1}^n a_k+\sum_{k=1}^n b_k$
+        \item $\sum_{k=1}^n [a_k\cdot b_k]=\sum_{k=1}^n a_k\cdot\sum_{k=1}^n b_k$
+        \item $\sum_{k=1}^n ca_k=c\sum_{k=1}^n a_k$
+        \item $\sum_{k=1}^n c=nc$
+        \item $\sum_{k=1}^n k=\frac{n(n+1)}{2}$
+        \item $\sum_{k=1}^n k^{2}=\frac{n(n+1)(2n+1)}{6}$
+        \item $\sum_{k=1}^n k^{3}=\left[ \frac{n(n+1)}{2} \right]^{2}$
+    \end{itemize}
+\end{theorem}
+
+There is also a general formula for the sum of the first $n$ $p$th powers.
+
+\begin{theorem}[Faulhaber's Formula]
+    Let $p$ be a positive integer. Then
+    \[ \sum_{k=1}^n k^p=\frac{1}{p+1}\sum_{r=0}^p B_{r}^+ n^{p+1-r},\]
+    where $B_{r}^+$ are the second Bernoulli numbers. 
+\end{theorem}
+
+\subsubsection{The Riemann Integral}
+
+We begin with a very important definition.
+
+\begin{definition}
+    Let $f\colon[a,b]\to \mathbb{R}$ be continuous and $P=\{x_{0},x_{1},\dots,x_{n}\}$ be a partition of $[a,b]$ where
+    \[ a=x_{0}<x_{1}<\dots<x_{n}=b. \]
+    Then the Riemann sum $S$ of $f$ over $[a,b]$ with a partition $P$ is defined as
+    \[ S=\sum_{i=1}^n f(x_{i}^*)\Delta x_{i}, \]
+    where $\Delta x_{i}=x_{i}-x_{i-1}$ and $x_{i}^*\in[x_{i-1},x_{i}]$. 
+\end{definition}
+
+From this, we derive the definition of the definite integral.
+
+\begin{definition}
+    Let $f\colon[a,b]\to \mathbb{R}$ be continuous and $P=\{x_{0},x_{1},\dots,x_{n}\}$ be a partition of $[a,b]$ where
+    \[ a=x_{0}<x_{1}<\dots<x_{n}=b. \]
+    Then the definite integral of $f$ over $[a,b]$ with a norm $\lVert P \rVert=\max\{\Delta x_{i}\}$ is defined as
+    \[ \int_{a}^{b} f(x) \, dx \coloneqq \lim_{ \lVert P \rVert  \to 0 } \sum_{i=1}^n f(x_{i}^*)\Delta x_{i} \]
+    if the limit exists, where $\Delta x_{i}=x_{i}-x_{i-1}$ and $x_{i}^*\in[x_{i-1},x_{i}]$. If the limit does exist, then $f$ is integrable on $[a,b]$.
+\end{definition}
+
+From this definition of the integral, we see that the difference between the upper and lower Riemann sums needs to be arbitrarily small. If $f$ is continuous on $[a,b]$, then we can make this difference arbitrarily small by choosing a sufficiently fine partition. Thus, we arrive at the following theorem.
+
+\begin{theorem}
+    If $f$ is continuous (or piecewise continuous) on $[a,b]$, then $f$ is Riemann integrable on $[a,b]$. 
+\end{theorem}
+
+When evaluating a Riemann sum, we often select regular partitions and take the right Riemann sum. Thus, we get $\Delta x_{i}=\frac{{b-a}}{n}$, $x_{i}^*=a+i \frac{{b-a}}{n}$, and so the integral can be written as
+\[ \int_{a}^{b} f(x) \, dx =\lim_{ n \to \infty } \sum_{i=1}^n f\left( a+i \frac{{b-a}}{n} \right) \frac{{b-a}}{n}. \]
+
+\subsection{Integral Theorems}
+
+Here are some theorems for definite integrals.
+
+\begin{theorem}
+    Let $f,g\colon[a,b]\to \mathbb{R}$ be integrable. Then
+    \begin{itemize}
+        \item $\int_{a}^{b} [f(x)+g(x)] \, dx = \int_{a}^{b} f(x) \, dx+\int_{a}^{b} g(x) \, dx$
+        \item $\int_{a}^{b} cf(x) \, dx=c\int_{a}^{b} f(x) \, dx$
+        \item $\int_{a}^{b} c \, dx=c(b-a)$
+        \item $\int_{a}^{b} f(x) \, dx=\int_{a}^{c} f(x) \, dx+\int_{c}^{b} f(x) \, dx$
+    \end{itemize} 
+\end{theorem}
+
+We also have the order properties of integrals. 
+
+\begin{theorem}
+    Let $f,g\colon[a,b]\to \mathbb{R}$ be integrable. Then
+    \begin{itemize}
+        \item For all $f$, 
+        \[ \int_{a}^{b} f(x) \, dx =-\int_{b}^{a} f(x) \, dx  \]
+        \item If $f(x)\leq g(x)$ for all $x \in[a,b]$, then 
+        \[ \int_{a}^{b} f(x) \, dx \leq \int_{a}^{b} g(x) \, dx  \]
+        \item If $m\leq f(x)\leq M$ for all $x \in[a,b]$, then
+        \[ m(b-a)\leq \int_{a}^{b} f(x) \, dx \leq M(b-a) \]
+        \item For all $f$,
+        \[ \left\lvert  \int_{a}^{b} f(x) \, dx   \right\rvert \leq \int_{a}^{b} \lvert f(x) \rvert  \, dx  \]
+    \end{itemize}
+\end{theorem}
+
+Here is the first fundamental theorem of calculus.
+
+\begin{theorem}[First Fundamental Theorem of Calculus]
+    For a continuous function $f$, an antiderivative $F$ can be obtained as the integral of $f$ over an interval with a variable upper bound. That is,
+    \[ F(x)=\int_{a}^{x} f(t) \, dt  \]
+    and
+    \[ F'(x)=\frac{d}{dx}\left[ \int_{a}^{x} f(t) \, dt  \right]=f(x). \]
+\end{theorem}
+
+If the upper bound is a function $g(x)$, we can use the chain rule to get
+\[ F'(x)=\frac{d}{dx}\left[ \int_{a}^{g(x)} f(t) \, dt  \right] = f(g(x))\cdot g'(x). \]
+
+Here is the second fundamental theorem of calculus.
+
+\begin{theorem}[Second Fundamental Theorem of Calculus]
+    The integral of $f$ over a fixed interval is equal to the change of any antiderivative $F$ between the ends of the interval. That is,
+    \[ \int_{a}^{b} f(x) \, dx =F(b)-F(a). \]
+\end{theorem}
+
+\subsection{Integration Techniques}
+
+We can use the results of common derivatives to find integrals. Here are some standard integrals:
+
+\begin{itemize}
+    \begin{multicols}{2}
+        \item $\int u^n \, du = \frac{u^{n+1}}{n+1}+C$, $n\neq 1$
+        \item $\int \frac{du}{u} =\ln \lvert u \rvert+C$
+        \item $\int e^u \, du =e^u+C$
+        \item $\int a^u \, du =\frac{a^u}{\ln a}+C$
+        \item $\int \sin u \, du =-\cos u+C$
+        \item $\int \cos u \, du =\sin u+C$
+        \item $\int \sec ^{2}u \, du = \tan u+C$
+        \item $\int \csc ^{2}u \, du = -\cot u+C$
+        \item $\int \sec u\tan u \, du = \sec u+C$
+        \item $\int \csc u\cot u \, du = -\csc u+C$
+        \item $\int \tan u \, du = \ln \lvert \sec u \rvert+C$
+        \item $\int \cot u \, du = \ln \lvert \sin u \rvert+C$
+        \item $\int \sec u \, du = \ln \lvert \sec u+\tan u \rvert+C$
+        \item $\int \csc u \, du = \ln \lvert \csc u-\cot u \rvert+C$
+        \item $\int \frac{du}{\sqrt{ a^{2}-u^{2} }}=\sin^{-1} \frac{u}{a}+C$, $a>0$
+        \item $\int \frac{du}{a^{2}+u^{2}}=\frac{1}{a} \tan^{-1} \frac{u}{a}+C$
+        \item $\int \frac{du}{u\sqrt{ u^{2}-a^{2} }}=\frac{1}{a} \sec^{-1} \frac{u}{a}+C$
+        \item $\int \frac{du}{u\sqrt{ a^{2}-u^{2} }}=\frac{1}{2a} \ln \left\lvert  \frac{{u+a}}{u-a}  \right\rvert+C$
+        \item $\int \frac{du}{u\sqrt{ u^{2}-a^{2} }}=\frac{1}{2a} \ln \left\lvert  \frac{{u-a}}{u+a}  \right\rvert+C$
+    \end{multicols}
+\end{itemize}
+
+Sometimes an integral will not be in a form which we can easily integrate. Another technique we can apply is substitution, which will reverse the chain rule. Let $u=g(x)$, then
+\[ \int f(g(x))g'(x) \, dx = \int f(u) \, du. \]
+
+Some integrals with square roots can be simplified by taking advantage of the pythagorean identity. To do this, we can make a trigonometric substitution:
+
+\begin{itemize}
+    \item $\sqrt{ a^{2}-b^{2}x^{2} }\implies$choose $x=\frac{a}{b}\sin \theta$
+    \item $\sqrt{ a^{2}+b^{2}x^{2} }\implies$choose $x=\frac{a}{b}\tan \theta$
+    \item $\sqrt{ b^{2}x^{2}-a^{2} }\implies$choose $x=\frac{a}{b}\sec \theta$
+\end{itemize}
+
+\begin{question}
+    What will each of these expressions simplify into?
+\end{question}
+
+Sometimes we may have a nonzero $x$ term inside the square root. We can turn it into one of the above forms by completing the square. \newpage
+
+Here are some more theorems that may be helpful for integration.
+
+\begin{theorem}
+    If $f$ is an odd function and integrable on $[-a,a]$, then
+    \[ \int_{-a}^{a} f(x) \, dx =0. \]
+    If $f$ is an even function and integrable on $[-a,a]$, then
+    \[ \int_{-a}^{a} f(x) \, dx =2\int_{0}^{a} f(x) \, dx . \]
+\end{theorem}
+
+\begin{theorem}[King's Rule]
+    Let $f\colon[a,b]\to \mathbb{R}$ be integrable. Then
+    \[ \int_{a}^{b} f(x) \, dx =\int_{a}^{b} f(a+b-x) \, dx . \]
+\end{theorem}
+
+A rational trigonometric integral can be transformed into an ordinary rational integral by the Weierstrass substitution, $t=\tan \frac{x}{2}$. This substitution implies the following:
+
+\begin{itemize}
+    \begin{multicols}{2}
+        \item $\sin x=\frac{2t}{1+t^{2}}$
+        \item $\cos x=\frac{{1-t^{2}}}{1+t^{2}}$
+        \item $\tan x=\frac{2t}{1-t^{2}}$
+        \item $dx=\frac{2}{1+t^{2}} \, dt$
+    \end{multicols}
+\end{itemize}
+
+\subsection{Applications of Integrals}
+
+One application of integrals is finding the area between two curves. This is done similarly to taking the area under a curve and the $x$-axis, except now we take the definite integral
+\[ \int_{a}^{b} \lvert f(x)-g(x) \rvert  \, dx . \]
 
 \end{document}

@@ -211,9 +211,22 @@ Here are some important definitions in linear algebra.
     \item Rank: The rank of a matrix is the dimension of its column space
 \end{itemize}
 
-\subsection{Column-Row Factorization}
+\subsection{Solving $\mathbf{A}\mathbf{x}=\mathbf{0}$}
 
-Column-row factorization decomposes any $m\times n$ matrix $\mathbf{A}$ of rank $r$ into the product of an $m\times 
-r$ matrix $\mathbf{C}$ and an $r\times n$ matrix $\mathbf{R}$. 
+We can factor an $m\times n$ matrix $\mathbf{A}$ of rank $r$ into the product of an $m\times r$ matrix $\mathbf{C}$ and an $r\times n$ matrix $\mathbf{R}$. We do this intuitively. $\mathbf{C}$ consists of the linearly independent columns of $\mathbf{A}$, and $\mathbf{R}$ can be found from $\mathbf{A}$ and $\mathbf{C}$. \\[-0.5em]
+
+Using this, we can more easily solve $\mathbf{A}\mathbf{x}=\mathbf{0}$ by reducing the equation to $\mathbf{R}\mathbf{x}=\mathbf{0}$ (why?). Here are some more definitions.
+\begin{itemize}
+    \item Pivot Variables: Variables that correspond to a pivot column
+    \item Free Variables: Variables that do not correspond to a pivot column
+    \item Null Space: The set of solutions to $\mathbf{A}\mathbf{x}=\mathbf{0}$
+    \item Nullity: The dimension of the null space
+\end{itemize}
+
+\subsubsection{Elementary Row Operations}
+We can also reduce $\mathbf{A}\mathbf{x}=\mathbf{0}$ to the form $\mathbf{R}\mathbf{x}=\mathbf{0}$ by using elementary row operations. An elementary row operation 
+\begin{itemize}
+    \item Honestly these are all obvious
+\end{itemize}
 
 \end{document}
