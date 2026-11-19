@@ -454,4 +454,69 @@ A rational trigonometric integral can be transformed into an ordinary rational i
 One application of integrals is finding the area between two curves. This is done similarly to taking the area under a curve and the $x$-axis, except now we take the definite integral
 \[ \int_{a}^{b} \lvert f(x)-g(x) \rvert  \, dx . \]
 
+Single definite integrals can also be used to compute volumes of simple shapes. By summing the areas of infinitely thin slices taken perpendicular to a chosen axis, we get
+\[ V(x)=\int_{a}^{b} A(x) \, dx . \]
+
+We can also use this to compute the volume obtained by rotating a function $f$ around the $x$-axis,
+\[ V(x)=\pi \int_{a}^{b} \left(f(x)\right)^{2} \, dx  \]
+
+Similarly, rotating the area between two functions $f$ and $g$ around the $x$-axis gives us
+\[ V(x)=\pi \int_{a}^{b} \left(f(x)\right)^{2} - \left(g(x)\right)^{2} \, dx  \]
+
+Alternatively we can obtain a volume of revolution around the $x$-axis by summing infinitely thin shells,
+\[ V(x)=2\pi \int_{a}^{b} yf(y) \, dy  \]
+
+\begin{question}
+    What if we revolve around the $y$-axis? What about a non-axis?
+\end{question}
+
+\newpage
+\section{Functions}
+
+\subsection{Properties of Functions}
+
+Here are some important definitions regarding functions.
+
+\begin{definition}
+    The average value of a function $f$ is 
+    \[f_{avg}=\frac{1}{b-a}\int_{a}^{b} f(x) \, dx.\]
+\end{definition}
+
+Here are some important definitions.
+
+\begin{definition}
+    A function $f$ is injective if for $a$, $b$ in the domain of $f$,
+    \[f(a)=f(b)\implies a=b.\]
+\end{definition}
+
+\begin{definition}
+    A function $f\colon A\hookrightarrow B$ has inverse $f^{-1}\colon B\hookrightarrow A$ where
+    \[f(f^{-1}(x))=f^{-1}(f(x))=x.\]
+\end{definition}
+
+Note that while surjectivity is required for an inverse to exist, a two sided inverse exists if and only if $f$ is bijective.
+
+\subsection{Logarithms and Exponents}
+
+We now introduce the logarithmic function.
+
+\begin{definition}
+    A logarithmic function is a nonconstant differentiable function $f\colon(0,\infty)\to \mathbb{R}$ such that for $a,b\in \mathbb{R}$,
+    \[ f(a\cdot b)=f(a)+f(b). \]
+    It satisfies
+    \begin{itemize}
+        \item $f(1)=0$
+        \item $f\left( \frac{x}{y} \right)=f(x)-f(y)$
+        \item $f'(x)=\frac{1}{x}f'(1)$
+    \end{itemize}
+\end{definition}
+
+And so we arrive at the natural logarithm, 
+\[ \ln x=\int_{1}^{x} \frac{dt}{t}. \]
+
+Exponentiation follows naturally, 
+\[ e^{\ln x}=\ln(e^x)=x. \]
+
+Note that we can also write $e^x$ as $\exp(x)$. 
+
 \end{document}
